@@ -1,0 +1,54 @@
+<!doctype html>
+<html　lang="jp">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114515355-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-114515355-1');
+	</script>
+	<meta charset="UTF-8">
+	<!-- TemplateBeginEditable name="doctitle" -->
+	<title>筑波大学産学間連携推進室</title>
+	<!-- TemplateEndEditable -->
+	<!-- TemplateBeginEditable name="head" -->
+	<!-- TemplateEndEditable -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+	<header>
+		<div id="pc-header" class="d-none d-md-block text-center">
+			<img alt="産学間連携推進室" src="../img/logo.png">
+		</div>
+		<div id="smart-header" class="d-md-none text-center">
+			<img alt="産学間連携推進室" src="../img/logo.png">
+		</div>
+	</header>
+	<div class="container">
+		
+	<!-- TemplateBeginEditable name="main" -->
+		<nav class="nav nav-pills nav-fill mb-4">
+			<a class="nav-item nav-link" href="../index.html">トップ</a>
+			<a class="nav-item nav-link" href="../members.html">メンバー</a>
+			<a class="nav-item nav-link" href="../news.html">お知らせ</a>
+			<a class="nav-item nav-link" href="../projects.html">プロジェクト</a>
+			<a class="nav-item nav-link" href="../about.html">弊室について</a>
+		</nav>
+	<!-- TemplateEndEditable -->
+	</div>
+	<footer class="border-top text-center mt-5 pt-5">
+		<p>&copy; 2018 Academic Collaboration Promotional Laboratory All Rights Reserved.</p>
+	</footer>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
