@@ -1,18 +1,51 @@
 @use "utils";
 
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 200px 0;
-  img {
-    width: min(800px, 50%);
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 200px 0;
+    img {
+      width: min(800px, 50%);
+    }
+
+    @include utils.media(md) {
+      padding: 30px 0;
+      img {
+        width: 80%;
+      }
+    }
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    a {
+      display: block;
+      flex: 1 1 auto;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      &[aria-current="page"] {
+        color: red;
+      }
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+
+  @include utils.media(lg) {
+    max-width: 720px;
   }
 
   @include utils.media(md) {
-    padding: 30px 0;
-    img {
-      width: 80%;
-    }
+    max-width: 540px;
   }
 }

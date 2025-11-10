@@ -10,3 +10,11 @@ build_search_index = false
 highlight_code = false
 
 [extra]
+nav = [
+  { title = "トップ", path = "/" },
+  { title = "メンバー", path = "/members/" },
+  { title = "お知らせ", path = "/news/" },
+  { title = "成果報告", path = "/publication/" },
+  { title = "プロジェクト", path = "/projects/" },
+  { title = "弊室について", path = "/about/" },
+]

@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section>
-    <h1>Hello</h1>
-  </section>
+  {{ section.content | safe }}
 {% endblock content%}
