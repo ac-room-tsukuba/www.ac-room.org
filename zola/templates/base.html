@@ -17,7 +17,7 @@
     <meta name="description" content="{{ description }}" />
     <meta name="author" content="{{ config.author | default(value='') }}" />
     <meta name="generator" content="zola 0.21.0" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ get_url(path='global.css', cachebust=true) }}">
   </head>
   <body>
     {% include "components/header.html" %}
