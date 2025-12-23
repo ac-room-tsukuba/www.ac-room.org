@@ -1,0 +1,37 @@
+{
+  "members": [
+    {
+      "name": "根本 晃輔",
+      "affiliation": "大学院 システム情報工学研究科 博士前期課程"
+    },
+    {
+      "name": "菊地 綾音",
+      "affiliation": "大学院 システム情報工学研究科 博士前期課程"
+    },
+    {
+      "name": "怒田 晟也",
+      "affiliation": "情報学群 情報科学類"
+    },
+    {
+      "name": "渡辺 裕",
+      "affiliation": "情報学群 情報科学類"
+    },
+    {
+      "name": "佐藤 大哲",
+      "affiliation": "情報学群 情報科学類",
+      "role": "室長"
+    },
+    {
+      "name": "関口 亞聖",
+      "affiliation": "情報学群 情報科学類"
+    },
+    {
+      "name": "小池 悠生",
+      "affiliation": "情報学群 情報科学類"
+    },
+    {
+      "name": "庄司 明洋",
+      "affiliation": "情報学群 情報科学類"
+    }
+  ]
+}
