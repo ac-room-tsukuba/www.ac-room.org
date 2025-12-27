@@ -28,8 +28,10 @@ header {
       text-align: center;
       padding: 0.5rem 1rem;
       text-decoration: none;
-      &[aria-current="page"] {
-        color: red;
+      color: #6d6d6d;
+      &[aria-current="page"],
+      &:hover {
+        color: #e60012;
       }
     }
   }
