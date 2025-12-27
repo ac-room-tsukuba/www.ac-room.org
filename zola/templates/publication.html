@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>成果報告</h2>
+  {% for page in section.pages | reverse %}
+  <article>
+    <h3>{{ page.title }}</h3>
+    {{ page.content | safe }}
+  </article>
+  {% endfor %}
+{% endblock content %}
