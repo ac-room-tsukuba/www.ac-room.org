@@ -1,0 +1,15 @@
+<header>
+  <div>
+    <img alt="産学間連携推進室" src="/img/logo.png" />
+  </div>
+  <nav class="container">
+    {% for item in config.extra.nav %}
+      {% set href = item.path %}
+      {% set is_current = current_path == href %}
+      <a href="{{ href }}"
+        {% if is_current %}aria-current="page"{% else %}aria-current="false"{% endif %}>
+        {{ item.title }}
+      </a>
+    {% endfor %}
+  </nav>
+</header>
