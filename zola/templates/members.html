@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <article class="members">
+    {{ page.content | safe }}
+
+    {% set start_year = page.extra.member_year_start %}
+
+    {% if start_year is not defined %}
+      <p>メンバー情報を準備中です。</p>
+    {% else %}
+      {% set current_year = now() | date(format="%Y") | int %}
+      {% set current_month = now() | date(format="%m") | int %}
+      {% if current_month < 4 %}
+        {% set current_year = current_year - 1 %}
+      {% endif %}
+
+      {% if current_year < start_year %}
+        <p>メンバー情報を準備中です。</p>
+      {% else %}
+        {% set year_sequence = range(start=start_year, end=current_year + 1) | reverse %}
+
+        {% set_global members_entries = [] %}
+        {% for year in year_sequence %}
+          {% set data_path = "members/" ~ year ~ ".json" %}
+          {% set member_data = load_data(path=data_path, required=false) %}
+          {% if member_data %}
+            {% set member_entry = [year, member_data] %}
+            {% set_global members_entries = members_entries | concat(with=[member_entry]) %}
+          {% endif %}
+        {% endfor %}
+
+        {% if members_entries | length > 0 %}
+          <div class="members-tabs" data-members-tabs>
+            <div class="members-tabs__nav" role="tablist" aria-label="年度別メンバー">
+              {% set_global first_tab_rendered = false %}
+              {% for entry in members_entries %}
+                {% set year = entry[0] %}
+                {% set member_data = entry[1] %}
+
+                {% set tab_id = "members-tab-" ~ year %}
+                {% set panel_id = "members-panel-" ~ year %}
+                {% set is_active = false %}
+                {% if not first_tab_rendered %}
+                  {% set is_active = true %}
+                  {% set_global first_tab_rendered = true %}
+                {% endif %}
+
+                <button
+                  id="{{ tab_id }}"
+                  class="members-tabs__tab"
+                  type="button"
+                  role="tab"
+                  aria-controls="{{ panel_id }}"
+                  aria-selected="{% if is_active %}true{% else %}false{% endif %}"
+                  tabindex="{% if is_active %}0{% else %}-1{% endif %}"
+                  data-members-tab
+                  data-target="{{ panel_id }}"
+                >
+                  {{ member_data.display_year | default(value=year ~ "年度") }}
+                </button>
+              {% endfor %}
+            </div>
+            <div class="members-tabs__panels">
+              {% set_global first_panel_rendered = false %}
+              {% for entry in members_entries %}
+                {% set year = entry[0] %}
+                {% set member_data = entry[1] %}
+
+                {% set tab_id = "members-tab-" ~ year %}
+                {% set panel_id = "members-panel-" ~ year %}
+                {% set is_active = false %}
+                {% if not first_panel_rendered %}
+                  {% set is_active = true %}
+                  {% set_global first_panel_rendered = true %}
+                {% endif %}
+
+                <section
+                  id="{{ panel_id }}"
+                  class="members-tabs__panel"
+                  role="tabpanel"
+                  aria-labelledby="{{ tab_id }}"
+                  aria-hidden="{% if is_active %}false{% else %}true{% endif %}"
+                  data-members-panel
+                >
+                  <section class="members__year">
+                    <h3 class="members__year-title">{{ member_data.display_year | default(value=year ~ "年度") }}</h3>
+                    {% if member_data.note %}
+                      <p class="members__note">{{ member_data.note }}</p>
+                    {% endif %}
+
+                    {% if member_data.members and member_data.members | length > 0 %}
+                      <ul class="members__list">
+                        {% for member in member_data.members %}
+                          <li class="members__item">
+                            <div class="members__item-header">
+                              <span class="members__name">{{ member.name }}</span>
+                              {% if member.role %}
+                                <span class="members__role">{{ member.role }}</span>
+                              {% endif %}
+                            </div>
+                            {% if member.affiliation %}
+                              <div class="members__affiliation">{{ member.affiliation }}</div>
+                            {% endif %}
+                            {% if member.focus %}
+                              <div class="members__focus">{{ member.focus }}</div>
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p>メンバー情報を準備中です。</p>
+                    {% endif %}
+                  </section>
+                </section>
+              {% endfor %}
+            </div>
+          </div>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              var containers = document.querySelectorAll('[data-members-tabs]');
+
+              Array.prototype.forEach.call(containers, function (container) {
+                var tabs = Array.prototype.slice.call(container.querySelectorAll('[data-members-tab]'));
+                var panels = Array.prototype.slice.call(container.querySelectorAll('[data-members-panel]'));
+
+                if (!tabs.length || !panels.length) {
+                  return;
+                }
+
+                function activateTab(tab) {
+                  var targetId = tab.getAttribute('data-target');
+                  var targetPanel = container.querySelector('[data-members-panel][id="' + targetId + '"]');
+                  if (!targetPanel) {
+                    return;
+                  }
+
+                  tabs.forEach(function (button) {
+                    button.setAttribute('aria-selected', 'false');
+                    button.setAttribute('tabindex', '-1');
+                  });
+
+                  panels.forEach(function (panel) {
+                    panel.setAttribute('aria-hidden', 'true');
+                  });
+
+                  tab.setAttribute('aria-selected', 'true');
+                  tab.setAttribute('tabindex', '0');
+
+                  targetPanel.setAttribute('aria-hidden', 'false');
+                }
+
+                tabs.forEach(function (tab) {
+                  tab.addEventListener('click', function () {
+                    activateTab(tab);
+                  });
+
+                  tab.addEventListener('keydown', function (event) {
+                    if (event.key === ' ' || event.key === 'Enter') {
+                      event.preventDefault();
+                      activateTab(tab);
+                    }
+                  });
+                });
+              });
+            });
+          </script>
+        {% else %}
+          <p>メンバー情報を準備中です。</p>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </article>
+{% endblock content %}
