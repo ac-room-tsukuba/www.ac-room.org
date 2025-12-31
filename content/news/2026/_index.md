@@ -1,4 +1,3 @@
 +++
 transparent = true
-render = false
 +++
