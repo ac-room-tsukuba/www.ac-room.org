@@ -14,6 +14,30 @@
   <div class="pc-row">
     <div class="flex-1">
       <h2>お知らせ</h2>
+      {% set news_section = get_section(path="news/_index.md") %}
+      {% set ordered_news = news_section.pages | sort(attribute="date") | reverse %}
+      {% set latest_news = ordered_news | slice(end=3) %}
+      {% if latest_news | length > 0 %}
+        <ul class="news__list">
+          {% for page in latest_news %}
+            <li class="news__item">
+              <a class="news__link" href="{{ page.permalink }}">
+                {% if page.date %}
+                  <time class="news__date" datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+                    {{ page.date | date(format="%Y年%-m月%-d日") }}
+                  </time>
+                {% endif %}
+                <span class="news__title">{{ page.title }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+        <p class="news__more">
+          <a href="{{ news_section.permalink }}">すべてのお知らせを見る</a>
+        </p>
+      {% else %}
+        <p class="news__empty">現在公開中のお知らせはありません。</p>
+      {% endif %}
     </div>
     <div class="flex-1">
       <h2>年次報告会について</h2>
