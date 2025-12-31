@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <article class="news-single">
+    <header class="news-single__header">
+      <p class="news-single__label">お知らせ</p>
+      {% if page.date %}
+        <time class="news-single__date" datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+          {{ page.date | date(format="%Y年%-m月%-d日") }}
+        </time>
+      {% endif %}
+      <h2 class="news-single__title">{{ page.title }}</h2>
+      {% if page.description %}
+        <p class="news-single__description">{{ page.description }}</p>
+      {% endif %}
+    </header>
+
+    <div class="news-single__body">
+      {{ page.content | safe }}
+    </div>
+
+    {% set news_section = get_section(path="news/_index.md") %}
+    <p class="news-single__back">
+      <a href="{{ news_section.permalink }}">お知らせ一覧に戻る</a>
+    </p>
+  </article>
+{% endblock content %}

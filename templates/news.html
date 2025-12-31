@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>お知らせ</h2>
+
+    {% set ordered_pages = section.pages | sort(attribute="date") | reverse %}
+  {% if ordered_pages | length > 0 %}
+    <ul class="news__list">
+      {% for page in ordered_pages %}
+        <li class="news__item">
+          <a class="news__link" href="{{ page.permalink }}">
+            {% if page.date %}
+              <time class="news__date" datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+                {{ page.date | date(format="%Y年%-m月%-d日") }}
+              </time>
+            {% endif %}
+            <span class="news__title">{{ page.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="news__empty">現在公開中のお知らせはありません。</p>
+  {% endif %}
+{% endblock content %}

@@ -1,0 +1,126 @@
+.members {
+  margin-top: 2rem;
+
+  &__year {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+  }
+
+  &__year-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  &__note {
+    margin: 0 0 1rem;
+    color: #5f5f5f;
+    font-size: 0.95rem;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__item {
+    padding: 0.75rem 1rem;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+  }
+
+  &__item-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  &__name {
+    font-weight: 600;
+  }
+
+  &__role {
+    font-size: 0.9rem;
+    color: #e60012;
+  }
+
+  &__affiliation,
+  &__focus {
+    font-size: 0.9rem;
+    color: #4a4a4a;
+    margin-top: 0.25rem;
+  }
+}
+
+.members-tabs {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #e0e0e0;
+    overflow-x: auto;
+  }
+
+  &__tab {
+    flex: 0 0 auto;
+    border: 1px solid #c9c9c9;
+    border-radius: 999px;
+    padding: 0.4rem 1.5rem;
+    font-weight: 600;
+    background-color: #fff;
+    color: #4a4a4a;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  &__tab:hover,
+  &__tab:focus-visible {
+    color: #e60012;
+    border-color: #e60012;
+  }
+
+  &__tab:focus-visible {
+    outline: 2px solid rgba(230, 0, 18, 0.3);
+    outline-offset: 2px;
+  }
+
+  &__tab[aria-selected="true"] {
+    background-color: #e60012;
+    border-color: #e60012;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &__panels {
+    position: relative;
+  }
+
+  &__panel {
+    display: none;
+  }
+
+  &__panel[aria-hidden="false"] {
+    display: block;
+  }
+
+  .members__year {
+    margin-top: 0;
+  }
+}
