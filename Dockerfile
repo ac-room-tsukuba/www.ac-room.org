@@ -9,8 +9,8 @@ RUN wget https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola
 RUN tar -xzf zola-v${ZOLA_VERSION}-${ARCH}-unknown-linux-gnu.tar.gz -C /usr/local/bin/ && \
     rm zola-v${ZOLA_VERSION}-${ARCH}-unknown-linux-gnu.tar.gz
 
-COPY zola/ /www.ac-room.org/
-WORKDIR /www.ac-room.org/
+COPY . /www.ac-room.org
+WORKDIR /www.ac-room.org
 RUN zola build
 
 # Run stage
