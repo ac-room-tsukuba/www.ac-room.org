@@ -14,11 +14,8 @@ ignored_static = []
 
 build_search_index = false
 
-[markdown]
-highlight_code = false
-
 [slugify]
-path = "on"
+paths = "on"
 taxonomies = "on"
 anchors = "on"
 
