@@ -7,6 +7,12 @@
   {% set title = section.title ~ ' | ' ~ title %}
 {% endif %}
 {% set description = page.description | default(value=section.description | default(value=config.description)) %}
+{% if description == "" %}
+  {% set description = config.title %}
+{% endif %}
+{% set page_path = current_path | default(value="/") %}
+{% set page_url = get_url(path=page_path) %}
+{% set og_image = get_url(path="img/ogp.png") %}
 
 <!doctype html>
 <html lang="ja">
@@ -17,6 +23,16 @@
     <meta name="description" content="{{ description }}" />
     <meta name="author" content="{{ config.author | default(value='') }}" />
     <meta name="generator" content="zola 0.21.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ config.title }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:url" content="{{ page_url }}" />
+    <meta property="og:image" content="{{ og_image }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{ description }}" />
+    <meta name="twitter:image" content="{{ og_image }}" />
     <link rel="stylesheet" href="{{ get_url(path='global.css', cachebust=true) }}">
   </head>
   <body>
