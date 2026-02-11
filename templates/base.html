@@ -13,8 +13,7 @@
 {% set page_path = current_path | default(value="/") %}
 {% set page_url = get_url(path=page_path) %}
 {% set og_image = get_url(path="img/ogp.png") %}
-{% set global_css_url = get_url(path="global.css", cachebust=true) %}
-{% set global_css_url = global_css_url | replace(from=config.base_url ~ "/", to="/") | replace(from=config.base_url, to="") %}
+{% set global_css_url = get_url(path="global.css", cachebust=true) | replace(from=config.base_url, to="") %}
 
 <!doctype html>
 <html lang="ja">
