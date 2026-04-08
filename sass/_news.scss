@@ -121,6 +121,10 @@
       padding-left: 1.5rem;
       margin-bottom: 1.2rem;
     }
+
+    hr {
+      margin-block: 1em;
+    }
   }
 
   &__back {
@@ -131,5 +135,24 @@
       color: #e60012;
       font-weight: 600;
     }
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1em auto;
+
+  a {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
